@@ -6,7 +6,7 @@ import classes from "./ProfileForm.module.css";
 const ProfileForm = () => {
   const newPasswordInputRef = useRef();
   const authCtx = useContext(AuthContext);
-  const history=useHistory();
+  const history = useHistory();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -25,16 +25,22 @@ const ProfileForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-      }).then(res=>{
-history.replace('/');
-      })
+      }
+    ).then((res) => {
+      history.replace("/");
+    });
   };
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes.control}>
         <label htmlFor="new-password">New Password</label>
-        <input type="password" id="new-password" minlenght="7" ref={newPasswordInputRef} />
+        <input
+          type="password"
+          id="new-password"
+          minlenght="7"
+          ref={newPasswordInputRef}
+        />
       </div>
       <div className={classes.action}>
         <button>Change Password</button>
